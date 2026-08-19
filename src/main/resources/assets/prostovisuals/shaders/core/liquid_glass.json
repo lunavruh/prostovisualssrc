@@ -1,0 +1,151 @@
+{
+  "vertex": "prostovisuals:core/liquid_glass",
+  "fragment": "prostovisuals:core/liquid_glass",
+  "samplers": [
+    {
+      "name": "Sampler0"
+    }
+  ],
+  "uniforms": [
+    {
+      "name": "ModelViewMat",
+      "type": "matrix4x4",
+      "count": 16,
+      "values": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "ProjMat",
+      "type": "matrix4x4",
+      "count": 16,
+      "values": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "Size",
+      "type": "float",
+      "count": 2,
+      "values": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "Radius",
+      "type": "float",
+      "count": 4,
+      "values": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "name": "Smoothness",
+      "type": "float",
+      "count": 1,
+      "values": [
+        1
+      ]
+    },
+    {
+      "name": "ScreenSize",
+      "type": "float",
+      "count": 2,
+      "values": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "PanelCenter",
+      "type": "float",
+      "count": 2,
+      "values": [
+        0.5,
+        0.5
+      ]
+    },
+    {
+      "name": "Time",
+      "type": "float",
+      "count": 1,
+      "values": [
+        0
+      ]
+    },
+    {
+      "name": "BlurRadius",
+      "type": "float",
+      "count": 1,
+      "values": [
+        5
+      ]
+    },
+    {
+      "name": "DistortionSpeed",
+      "type": "float",
+      "count": 1,
+      "values": [
+        0.18
+      ]
+    },
+    {
+      "name": "DistortionIntensity",
+      "type": "float",
+      "count": 1,
+      "values": [
+        0.0018
+      ]
+    },
+    {
+      "name": "RimStrength",
+      "type": "float",
+      "count": 1,
+      "values": [
+        0.48
+      ]
+    },
+    {
+      "name": "Zoom",
+      "type": "float",
+      "count": 1,
+      "values": [
+        1.045
+      ]
+    }
+  ]
+}

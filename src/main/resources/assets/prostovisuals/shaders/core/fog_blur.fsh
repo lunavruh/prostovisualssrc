@@ -1,0 +1,4 @@
+#version 150
+uniform sampler2D Sampler0; uniform vec2 ViewResolution; uniform float Strength; uniform float Horizon;
+in vec2 TexCoord; in vec4 VertexColor; out vec4 fragColor;
+void main(){vec2 texel=1.0/max(ViewResolution,vec2(1.));float radius=1.0+Strength*3.4;vec2 dx=vec2(texel.x*radius,0),dy=vec2(0,texel.y*radius);vec3 sharp=texture(Sampler0,TexCoord).rgb;vec3 blur=sharp*.34;blur+=(texture(Sampler0,clamp(TexCoord+dx,vec2(0.),vec2(1.))).rgb+texture(Sampler0,clamp(TexCoord-dx,vec2(0.),vec2(1.))).rgb)*.16;blur+=(texture(Sampler0,clamp(TexCoord+dy,vec2(0.),vec2(1.))).rgb+texture(Sampler0,clamp(TexCoord-dy,vec2(0.),vec2(1.))).rgb)*.16;float d=abs(TexCoord.y-Horizon);float horizonMask=1.-smoothstep(.10,.48,d);float lower=smoothstep(.02,.18,TexCoord.y);float mask=clamp(horizonMask*.82+lower*.18,0.,1.)*Strength;fragColor=vec4(mix(sharp,blur,mask),1.);}

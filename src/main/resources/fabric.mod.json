@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "prostovisuals",
+  "version": "${version}",
+  "name": "prostovisuals",
+  "description": "The best free visual mod",
+  "authors": [
+    "Sh1ckOnly",
+    "Allans"
+  ],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/prostovisuals/hud/amongus.png",
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "dev.prostovisuals.prostovisuals"
+    ]
+  },
+  "mixins": [
+    "prostovisuals.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "minecraft": "1.21.4",
+    "fabric-api": "*"
+  }
+}

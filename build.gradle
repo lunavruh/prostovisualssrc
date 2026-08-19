@@ -1,0 +1,99 @@
+plugins {
+    id 'fabric-loom' version '1.10-SNAPSHOT'
+    id 'maven-publish'
+    id 'com.gradleup.shadow' version '9.0.0-beta15'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    // Prefer FirstDark for its group
+    exclusiveContent {
+        forRepository {
+            maven { url "https://maven.firstdark.dev/releases" }
+        }
+        filter {
+            includeGroup "dev.firstdark.discordrpc"
+        }
+    }
+    mavenCentral()
+    maven { url "https://jitpack.io" }
+    maven { url "https://maven.meteordev.org/releases" }
+    maven { url "https://maven.meteordev.org" }
+}
+
+dependencies {
+    minecraft("com.mojang:minecraft:${project.minecraft_version}")
+    mappings("net.fabricmc:yarn:${project.yarn_mappings}:v2")
+    modImplementation("net.fabricmc:fabric-loader:${project.loader_version}")
+    modImplementation("net.fabricmc.fabric-api:fabric-api:${project.fabric_version}")
+    
+    implementation(shadow("dev.redstones.mediaplayerinfo:media-player-info:0.1.0"))
+    implementation("com.google.code.gson:gson:2.10.1")
+    // Direct Win32 window enumeration + background input bridge for Spatial Display.
+    implementation(shadow("net.java.dev.jna:jna:5.14.0"))
+    implementation(shadow("net.java.dev.jna:jna-platform:5.14.0"))
+    // shadow(...) — иначе библиотека не попадёт в jar и модуль DiscordRPC упадёт с NoClassDefFoundError
+    implementation(shadow("dev.firstdark.discordrpc:discord-rpc:1.0.3"))
+    include implementation("meteordevelopment:orbit:0.2.3") 
+    compileOnly("org.projectlombok:lombok:1.18.38")
+    annotationProcessor("org.projectlombok:lombok:1.18.38")
+}
+
+tasks.withType(JavaCompile).configureEach {
+    it.options.encoding = "UTF-8"
+    if (21 >= 10 || JavaVersion.current().isJava10Compatible()) it.options.release.set(21)
+}
+
+processResources {
+    inputs.property "version", project.version
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+java {
+    def javaVersion = JavaVersion.toVersion(21)
+    if (JavaVersion.current() < javaVersion) toolchain.languageVersion = JavaLanguageVersion.of(21)
+    withSourcesJar()
+}
+
+sourceSets {
+    main {
+        java {
+            exclude 'discordrpc/**'
+        }
+    }
+}
+
+jar {
+    from("LICENSE") {
+        rename { "${it}_${project.archivesBaseName}" }
+    }
+}
+
+shadowJar {
+    exclude("org/objectweb/**")
+    configurations = [project.configurations.shadow]
+    archiveClassifier.set("dev")
+}
+
+remapJar {
+    dependsOn(shadowJar)
+    inputFile = tasks.shadowJar.archiveFile
+}
+
+// Stable artifact for ProstoVisualLoader.
+// Run: gradlew prepareLoaderClient
+// Result: launcher-dist/prostovisuals-client.jar
+tasks.register("prepareLoaderClient", Copy) {
+    dependsOn tasks.remapJar
+    from(tasks.remapJar.archiveFile)
+    into(layout.projectDirectory.dir("launcher-dist"))
+    rename { "prostovisuals-client.jar" }
+}
