@@ -1,0 +1,81 @@
+{
+  "vertex": "wyvern:core/skyshader/video_sky",
+  "fragment": "wyvern:core/skyshader/energy",
+  "samplers": [],
+  "uniforms": [
+    {
+      "name": "uTime",
+      "type": "float",
+      "count": 1,
+      "values": [
+        0
+      ]
+    },
+    {
+      "name": "uResolution",
+      "type": "float",
+      "count": 2,
+      "values": [
+        1920,
+        1080
+      ]
+    },
+    {
+      "name": "uCameraDir",
+      "type": "float",
+      "count": 2,
+      "values": [
+        0,
+        0
+      ]
+    },
+    {
+      "name": "uFov",
+      "type": "float",
+      "count": 1,
+      "values": [
+        70
+      ]
+    },
+    {
+      "name": "uIntensity",
+      "type": "float",
+      "count": 1,
+      "values": [
+        1
+      ]
+    },
+    {
+      "name": "uStars",
+      "type": "float",
+      "count": 1,
+      "values": [
+        1
+      ]
+    },
+    {
+      "name": "uRotation",
+      "type": "float",
+      "count": 1,
+      "values": [
+        0
+      ]
+    },
+    {
+      "name": "uSpeed",
+      "type": "float",
+      "count": 1,
+      "values": [
+        1
+      ]
+    },
+    {
+      "name": "uScale",
+      "type": "float",
+      "count": 1,
+      "values": [
+        1
+      ]
+    }
+  ]
+}

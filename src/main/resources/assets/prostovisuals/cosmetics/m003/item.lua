@@ -1,0 +1,2 @@
+-- ProstoVisual: keep the player nameplate clean; cosmetic/avatar names are never injected.
+-- nameplate.ALL:setText("baron bunny")

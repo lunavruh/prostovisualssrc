@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "wyvern",
+  "version": "1.0-SNAPSHOT",
+  "name": "Wyvern",
+  "description": "",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "icon": "assets/wyvern/icons/avatar.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      {
+        "adapter": "default",
+        "value": "wtf.wyvern.Wyvern::INSTANCE"
+      }
+    ],
+    "main": [
+      "dev.prostovisuals.prostovisuals"
+    ]
+  },
+  "mixins": [
+    "wyvern.mixins.json",
+    "prostovisuals.mixins.json"
+  ],
+  "accessWidener": "wyvern.accesswidener",
+  "depends": {
+    "fabricloader": ">=0.16.10",
+    "fabric": "*",
+    "minecraft": "1.21.4"
+  }
+}

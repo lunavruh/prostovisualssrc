@@ -1,0 +1,52 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.prostovisuals.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "AspectRatioMixin",
+    "AttackEventMixin",
+    "HeldItemRendererMixin",
+    "HitSoundMixin",
+    "ItemEntityRendererMixin",
+    "KeyboardMixin",
+    "ClientPlayerInteractionManagerMixin",
+    "LimbAnimatorMixin",
+    "LivingEntityMixin",
+    "LivingEntityRendererMixin",
+    "MixinCapeFeatureRenderer",
+    "accessors.IGameRenderer",
+    "accessors.IMinecraftClientSessionAccessor"
+  ],
+  "client": [
+    "BossBarHudMixin",
+    "ChatHudNameProtectMixin",
+    "ChatInputSuggestorMixin",
+    "ChatScreenMixin",
+    "CustomSkyMixin",
+    "EntityRendererNameProtectMixin",
+    "GameRendererMixin",
+    "InGameHudMixin",
+    "InGameOverlayRendererMixin",
+    "ItemRendererMixin",
+    "LightmapTextureManagerMixin",
+    "MinecraftClientMixin",
+    "MouseMixin",
+    "MixinTitleScreen",
+    "ParticleManagerMixin",
+    "PlayerListHudNameProtectMixin",
+    "ScoreboardNameProtectMixin",
+    "WorldRendererMixin",
+    "EntityRenderDispatcherMixin",
+    "HandledScreenMixin",
+    "DrawContextTooltipMixin",
+    "accessors.IWorldRenderer",
+    "CameraMixin",
+    "ClientWorldWeatherMixin",
+    "PlayerListHudMixin",
+    "accessors.INativeImage"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
